@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinta Sehidup Semati — Janji Kita</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --mawar: #e11d48;
+            --merah-lembut: #f43f5e;
+            --emas-lembut: #fbbf24;
+            --krem: #fffbeb;
+            --coklat-lembut: #78350f;
+            --ungu-lembut: #a78bfa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(180deg, #fff1f2, #fef3c7, #fefce8);
+            min-height: 100vh;
+            color: var(--coklat-lembut);
+            overflow-x: hidden;
+        }
+
+        /* Hati Melayang */
+        .latar-hati {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hati {
+            position: absolute;
+            color: rgba(244, 63, 94, 0.25);
+            animation: naikMelayang 8s infinite ease-in-out;
+            font-size: 1.2rem;
+        }
+        @keyframes naikMelayang {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Hati Berdetak */
+        .berdetak {
+            animation: detak 1.2s infinite;
+        }
+        @keyframes detak {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+        }
+
+        /* Teks Muncul Perlahan */
+        .muncul {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: muncul 1.2s ease forwards;
+        }
+        @keyframes muncul {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tunda-1 { animation-delay: 0.3s; }
+        .tunda-2 { animation-delay: 0.6s; }
+        .tunda-3 { animation-delay: 0.9s; }
+        .tunda-4 { animation-delay: 1.2s; }
+        .tunda-5 { animation-delay: 1.5s; }
+
+        /* Bingkai Mewah Romantis */
+        .bingkai-cinta {
+            position: relative;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        .bingkai-cinta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #f43f5e, #fbbf24, #f43f5e, #ec4899);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: putarBingkai 6s linear infinite;
+            background-size: 300% 300%;
+        }
+        @keyframes putarBingkai {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+
+        /* Tulisan Tangan Indah */
+        .tulisan-hati {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Bayangan Lembut */
+        .cahaya-lembut {
+            box-shadow: 0 10px 40px rgba(244, 63, 94, 0.15),
+                        0 0 60px rgba(251, 191, 36, 0.1);
+        }
+
+        /* Garis Pemisah Hati */
+        .garis-hati {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .garis-hati::before,
+        .garis-hati::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #f43f5e, transparent);
+        }
+
+        /* Foto Pasangan */
+        .wadah-foto {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(244, 63, 94, 0.2);
+        }
+        .wadah-foto::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(254, 243, 199, 0.8));
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="relative">
+
+<!-- Hati Melayang di Latar -->
+<div class="latar-hati" id="latarHati"></div>
+
+<!-- KONTEN UTAMA -->
+<main class="relative z-10 max-w-2xl mx-auto px-5 py-12">
+
+    <!-- JUDUL & HATI -->
+    <div class="text-center mb-8 muncul">
+        <span class="text-5xl berdetak inline-block mb-4">❤️</span>
+        <h1 class="text-4xl md:text-5xl font-bold tulisan-hati text-rose-600 mb-3">
+            Cinta Sehidup Semati
+        </h1>
+        <p class="text-amber-700 text-lg">Janji yang terukir di dalam hati, untuk selamanya</p>
+    </div>
+
+    <!-- FOTO UTAMA -->
+    <div class="wadah-foto mb-8 muncul tunda-1">
+        <img src="love2.png" alt="Kita Berdua — Cinta Sehidup Semati" class="w-full h-auto object-cover">
+    </div>
+
+    <!-- BAGIAN JANJI -->
+    <div class="bingkai-cinta cahaya-lembut p-8 mb-6 muncul tunda-2">
+        <div class="garis-hati mb-6">
+            <span class="text-rose-500 text-xl">💌</span>
+        </div>
+
+        <h2 class="text-2xl font-bold text-center tulisan-hati text-rose-600 mb-6">
+            Kepada Kau yang Kucintai
+        </h2>
+
+        <div class="space-y-5 text-center text-amber-900 leading-relaxed text-lg">
+            <p>
+                Ketika takdir mempertemukan kita,<br>
+                dunia terasa begitu indah dan penuh makna.
+            </p>
+            <p>
+                Kau adalah jawaban dari setiap doa yang terpanjat,<br>
+                penenang di setiap gelisah, dan cahaya di setiap hariku.
+            </p>
+            <p>
+                Bersamamu, aku belajar apa artinya dicintai sepenuhnya,<br>
+                dan mencintai tanpa syarat dengan segenap jiwa.
+            </p>
+        </div>
+
+        <div class="garis-hati my-8">
+            <span class="text-rose-500">💕</span>
+        </div>
+
+        <h3 class="text-xl font-bold text-center tulisan-hati text-rose-600 mb-4">
+            Janji Sehidup Semati
+        </h3>
+
+        <div class="space-y-4 text-center text-amber-900 leading-relaxed">
+            <p class="italic">
+                "Di hadapan Allah dan alam semesta,<br>
+                aku berjanji kepadamu:"
+            </p>
+            <p>
+                💛 Menemani di saat bahagia maupun susah,<br>
+                💛 Setia di saat sehat maupun sakit,<br>
+                💛 Menjadi tempat pulang yang paling damai,<br>
+                💛 Mencintaimu hari ini, esok, dan selamanya.
+            </p>
+            <p class="font-semibold text-rose-700 mt-4">
+                Tidak ada yang dapat memisahkan kita,<br>
+                baik di dunia maupun di akhirat kelak.
+            </p>
+            <p class="tulisan-hati text-2xl text-rose-600 mt-6">
+                — Cintaku untukmu, abadi selamanya —
+            </p>
+        </div>
+    </div>
+
+    <!-- BAGIAN ALASAN CINTA -->
+    <div class="bingkai-cinta cahaya-lembut p-8 mb-6 muncul tunda-4">
+        <h3 class="text-xl font-bold text-center tulisan-hati text-rose-600 mb-6">
+            Mengapa Kau? 💞
+        </h3>
+        <div class="space-y-3 text-amber-900">
+            <p class="flex items-start gap-3">
+                <span>✨</span>
+                <span>Karena di matamu, aku melihat masa depan yang indah</span>
+            </p>
+            <p class="flex items-start gap-3">
+                <span>✨</span>
+                <span>Karena di pelukanmu, aku menemukan kedamaian yang tak pernah ada di tempat lain</span>
+            </p>
+            <p class="flex items-start gap-3">
+                <span>✨</span>
+                <span>Karena kehadiranmu membuatku ingin menjadi manusia yang lebih baik setiap harinya</span>
+            </p>
+            <p class="flex items-start gap-3">
+                <span>✨</span>
+                <span>Karena kau adalah takdir terindah yang dikirimkan Tuhan untukku</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- PENUTUP DENGAN NAMA -->
+    <div class="text-center muncul tunda-5">
+        <p class="tulisan-hati text-2xl text-rose-600 mb-4">
+            "Kita adalah satu, tak terpisahkan, sehidup semati."
+        </p>
+        <p class="text-amber-700 mb-6">
+            — Dengan segenap cinta, untukmu —<br>
+            <span class="font-bold text-rose-600 text-xl tulisan-hati">Ikrom Walidaini</span>
+        </p>
+        
+        <p class="text-sm text-amber-600 opacity-70">
+            ❤️ Dibuat dengan cinta • Cinta tidak pernah berakhir ❤️
+        </p>
+    </div>
+
+</main>
+
+<script>
+// === GENERASI HATI MELAYANG ===
+const wadah = document.getElementById('latarHati');
+const jumlahHati = 25;
+
+for (let i = 0; i < jumlahHati; i++) {
+    const h = document.createElement('div');
+    h.className = 'hati';
+    h.textContent = '❤️';
+    h.style.left = Math.random() * 100 + '%';
+    h.style.animationDelay = Math.random() * 8 + 's';
+    h.style.animationDuration = (6 + Math.random() * 6) + 's';
+    h.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
+    wadah.appendChild(h);
+}
+</script>
+
+</body>
+</html>
